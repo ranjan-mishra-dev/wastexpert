@@ -1,0 +1,3 @@
+26:    🟢- Once you’re satisfied with the staged files, commit them to the repository. This creates a new snapshot in your project’s history.
+
+27:    🟢- After adding files to the staging area, check the status again to verify what’s staged.
