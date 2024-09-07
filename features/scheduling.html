@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    <title>Waste Collection Calendar</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+        }
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Waste Collection Schedule</h1>
+    <div id='calendar'></div>
+
+
+    <label for="location">Select your location:</label>
+<select id="location">
+    <option value="location1">Waghodia</option>
+    <option value="location2">Virindavan Choksi</option>
+    <!-- Add more locations as needed -->
+</select>
+<button id="loadCalendar">Load Calendar</button>
+
+<script>
+    
+</script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    // Sample data, replace with actual waste collection days based on user location
+                    { title: 'Regular Collection', date: '2024-09-10' },
+                    { title: 'Recycling Collection', date: '2024-09-17' },
+                    { title: 'Hazardous Waste Collection', date: '2024-09-24' }
+                ]
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html>

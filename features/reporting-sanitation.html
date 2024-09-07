@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Sanitation Reporting</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Include your CSS file -->
+</head>
+<body>
+
+    <h1>Report Unsanitary Conditions</h1>
+    <form id="reportForm">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image">
+
+        <button type="submit">Submit Report</button>
+    </form>
+
+    <div id="responseMessage"></div>
+
+    <script>
+        document.getElementById('reportForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const formData = new FormData(this); // Gather form data
+
+            fetch('/api/report', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('responseMessage').innerText = data.message;
+                document.getElementById('reportForm').reset(); // Reset the form
+            })
+            .catch(error => {
+                console.error('Error submitting report:', error);
+            });
+        });
+    </script>
+
+</body>
+</html>
